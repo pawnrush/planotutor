@@ -1,231 +1,717 @@
-// Add this line at the very top. It tells Next.js that this component uses client-side interactivity (for the mobile menu).
-"use client";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Plano Tutor - ABA Therapy & Comprehensive Behavior Data Solutions</title>
+    <meta name="description" content="Expert ABA therapy and comprehensive behavior data collection solutions for home, school, clinic, sports, and organizational settings in Plano, TX. Professional training and consultation services.">
+    
+    <!-- CDN Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- React and Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-heading {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+        .blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            opacity: 0.1;
+        }
+        @media print {
+            body { print-color-adjust: exact; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
 
-// Import the 'useState' hook from React to manage the mobile menu's state.
-import { useState } from 'react';
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
 
-// This is the main component for your homepage.
-export default function Home() {
-  // 'isMenuOpen' will track if the mobile menu is visible. 'setIsMenuOpen' is the function to change it.
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+        // Header Component
+        const Header = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isScrolled, setIsScrolled] = useState(false);
 
-  return (
-    // The <main> element wraps all your page content.
-    <main>
-      {/* Header */}
-      <header id="header" className="bg-white py-4 shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-6 flex justify-between items-center">
-            {/* Logo */}
-            <a href="/" className="flex items-center space-x-2">
-                <svg className="h-8 w-8 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                </svg>
-                <span className="text-xl font-bold text-gray-800">The Plano Tutor</span>
-            </a>
+            useEffect(() => {
+                const handleScroll = () => {
+                    setIsScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-                <a href="/about" className="text-gray-600 hover:text-blue-700 font-semibold">About Us</a>
-                <a href="/services" className="text-gray-600 hover:text-blue-700 font-semibold">Services</a>
-                <a href="/testimonials" className="text-gray-600 hover:text-blue-700 font-semibold">Testimonials</a>
-                <a href="/contact" className="text-gray-600 hover:text-blue-700 font-semibold">Contact</a>
-                <a href="#" className="text-sm text-gray-600 hover:text-blue-700 font-semibold">Client Portal</a>
-            </nav>
+            return (
+                <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'}`}>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center py-4">
+                            <div className="flex items-center space-x-2">
+                                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                                    <i className="fas fa-brain text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl font-bold font-heading text-gray-900">The Plano Tutor</h1>
+                                    <p className="text-xs text-gray-600">ABA Therapy & Data Solutions</p>
+                                </div>
+                            </div>
 
-            {/* Desktop CTA */}
-            <a href="/intake" className="hidden md:inline-block bg-blue-700 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-800 transition duration-300">Start Intake</a>
-            
-            {/* Mobile Menu Toggle - Uses onClick to change the state */}
-            <button 
-              id="mobile-nav-toggle" 
-              className={`md:hidden mobile-nav-toggle ${isMenuOpen ? 'active' : ''}`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-                <span className="sr-only">Open main menu</span>
-                <span className="block w-6 h-0.5 bg-gray-700 transition-transform duration-300"></span>
-                <span className="block w-6 h-0.5 bg-gray-700 mt-1.5 transition-opacity duration-300"></span>
-                <span className="block w-6 h-0.5 bg-gray-700 mt-1.5 transition-transform duration-300"></span>
-            </button>
-        </div>
+                            <nav className="hidden md:flex space-x-8">
+                                <a href="#services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
+                                <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
+                                <a href="#pricing" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Pricing</a>
+                                <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
+                            </nav>
 
-        {/* Mobile Navigation - Conditionally shown based on 'isMenuOpen' state */}
-        <div id="mobile-nav" className={`${isMenuOpen ? '' : 'hidden'} md:hidden absolute top-full left-0 w-full bg-white shadow-lg`}>
-            <nav className="flex flex-col p-4 space-y-2">
-                <a href="/about" className="text-gray-600 hover:text-blue-700 p-2 rounded">About Us</a>
-                <a href="/services" className="text-gray-600 hover:text-blue-700 p-2 rounded">Services</a>
-                <a href="/testimonials" className="text-gray-600 hover:text-blue-700 p-2 rounded">Testimonials</a>
-                <a href="/contact" className="text-gray-600 hover:text-blue-700 p-2 rounded">Contact</a>
-                <hr className="my-2" />
-                <a href="#" className="text-gray-600 hover:text-blue-700 p-2 rounded">Client Portal</a>
-                <a href="/intake" className="bg-blue-700 text-white text-center font-bold py-3 px-5 rounded-full hover:bg-blue-800 transition duration-300 mt-2">Start Intake</a>
-            </nav>
-        </div>
-      </header>
-      
-      {/* Hero Section - The background image is now handled by a style prop */}
-      <section 
-        className="text-white text-center py-24 sm:py-32 lg:py-40"
-        style={{
-            background: `linear-gradient(rgba(0, 74, 124, 0.75), rgba(0, 74, 124, 0.75)), url('https://placehold.co/1920x1080/004a7c/ffffff?text=Play+Area') no-repeat center center/cover`
-        }}
-      >
-          <div className="container mx-auto px-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">Empowering Children, Connecting Families.</h1>
-              <p className="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto opacity-90 mb-8">Compassionate ABA therapy in Plano, TX, dedicated to helping your child build independence and thrive.</p>
-              <a href="/intake" className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 transform hover:scale-105">Start the Intake Process</a>
-          </div>
-      </section>
+                            <div className="flex items-center space-x-4">
+                                <a href="tel:8557728847" className="hidden md:flex items-center text-blue-600 font-semibold">
+                                    <i className="fas fa-phone mr-2"></i>
+                                    (855) 772-8847
+                                </a>
+                                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                    Get Started
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            );
+        };
 
-      {/* Intro Section */}
-      <section id="about" className="py-20 bg-white">
-          <div className="container mx-auto px-6 text-center">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Guidance on the Path to Potential</h2>
-              <p className="max-w-4xl mx-auto text-lg text-gray-600">
-                  At The Plano Tutor, we understand that every child's journey is unique. We provide expert, evidence-based Applied Behavior Analysis (ABA) therapy that illuminates the path forward. Our play-based, compassionate approach focuses on celebrating your child's strengths, nurturing new skills, and empowering your entire family with the tools for lasting success.
-              </p>
-          </div>
-      </section>
+        // Hero Section Component
+        const HeroSection = () => {
+            return (
+                <section className="relative min-h-screen flex items-center gradient-bg overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="blob absolute top-20 right-20 w-64 h-64"></div>
+                    <div className="blob absolute bottom-20 left-20 w-48 h-48"></div>
+                    
+                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+                        <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6">
+                            Empowering Children,<br />
+                            <span className="text-yellow-300">Connecting Families</span>
+                        </h1>
+                        <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+                            Comprehensive ABA therapy and behavior data collection solutions for home, school, clinic, sports, and organizational settings in Plano, TX.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
+                                <i className="fas fa-play-circle mr-2"></i>
+                                Start Your Journey
+                            </button>
+                            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors flex items-center justify-center">
+                                <i className="fas fa-calendar mr-2"></i>
+                                Schedule Consultation
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Behavior Analytic Services</h2>
-                  <p className="max-w-3xl mx-auto text-lg text-gray-600">We offer a range of data-driven solutions tailored to diverse needs across home, school, and organizational settings.</p>
-              </div>
+        // Services Component
+        const ServicesSection = () => {
+            const services = [
+                {
+                    icon: 'fas fa-home',
+                    title: 'In-Home ABA Therapy',
+                    description: 'Personalized ABA therapy in your natural family environment with individualized treatment plans.',
+                    features: ['One-on-one sessions', 'Family training', 'Natural environment teaching', 'Flexible scheduling'],
+                    price: 'Starting at $75/hour'
+                },
+                {
+                    icon: 'fas fa-school',
+                    title: 'School Training Programs',
+                    description: 'Professional development for educators on FBA, data collection, and behavior intervention plans.',
+                    features: ['FBA methodology', 'Data collection systems', 'BIPS development', 'Compliance training'],
+                    price: 'Starting at $150/hour'
+                },
+                {
+                    icon: 'fas fa-chart-line',
+                    title: 'Home Data Solutions',
+                    description: 'Digital behavior tracking systems for families to monitor progress and intervention effectiveness.',
+                    features: ['Mobile apps', 'Real-time tracking', 'Progress reports', 'Parent dashboards'],
+                    price: 'Starting at $200/setup'
+                },
+                {
+                    icon: 'fas fa-graduation-cap',
+                    title: 'School Data Systems',
+                    description: 'Comprehensive data collection solutions for educational institutions and IEP compliance.',
+                    features: ['Student tracking', 'IEP documentation', 'Behavior monitoring', 'Academic progress'],
+                    price: 'Starting at $300/setup'
+                },
+                {
+                    icon: 'fas fa-clinic-medical',
+                    title: 'Clinical Data Solutions',
+                    description: 'HIPAA-compliant data collection systems for healthcare facilities and therapy centers.',
+                    features: ['Treatment tracking', 'Outcome measurement', 'Compliance reporting', 'Multi-user access'],
+                    price: 'Starting at $400/setup'
+                },
+                {
+                    icon: 'fas fa-running',
+                    title: 'Sports & Fitness Data',
+                    description: 'Athletic performance and behavior tracking for sports teams and fitness organizations.',
+                    features: ['Performance metrics', 'Team behavior analysis', 'Coaching effectiveness', 'Injury prevention'],
+                    price: 'Starting at $250/setup'
+                },
+                {
+                    icon: 'fas fa-building',
+                    title: 'Organizational Behavior',
+                    description: 'Workplace behavior management and performance optimization for businesses.',
+                    features: ['Employee productivity', 'Safety monitoring', 'Leadership assessment', 'Team dynamics'],
+                    price: 'Starting at $500/setup'
+                },
+                {
+                    icon: 'fas fa-users',
+                    title: 'Parent Training & Support',
+                    description: 'Comprehensive training programs to empower families with ABA strategies and techniques.',
+                    features: ['Group workshops', 'Individual coaching', 'Resource materials', 'Ongoing support'],
+                    price: 'Starting at $100/session'
+                }
+            ];
 
-              {/* Services for Children & Families */}
-              <div className="mb-16">
-                  <h3 className="text-2xl font-bold text-gray-800 text-center mb-8">For Children & Families</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      {/* Service Card 1 */}
-                      <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                          <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
-                              <svg className="h-10 w-10 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">In-Home ABA Therapy</h3>
-                          <p className="text-gray-600 mb-4">We provide personalized ABA programs and robust data collection solutions right in your home to foster daily living skills.</p>
-                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
-                      </div>
-                      {/* Service Card 2 */}
-                      <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                          <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
-                               <svg className="h-10 w-10 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">School Consultation</h3>
-                          <p className="text-gray-600 mb-4">We partner with schools for training on FBAs, data collection, and creating effective BIPs to support student success.</p>
-                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
-                      </div>
-                      {/* Service Card 3 */}
-                      <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                          <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
-                              <svg className="h-10 w-10 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /> </svg>
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">Clinic-Based Services</h3>
-                          <p className="text-gray-600 mb-4">Our clinic offers a controlled environment for intensive therapy and precise behavior data collection for focused skill acquisition.</p>
-                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
-                      </div>
-                  </div>
-              </div>
+            return (
+                <section id="services" className="py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-4">
+                                Comprehensive Behavior Solutions
+                            </h2>
+                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                Expert ABA therapy and data collection solutions across all environments and settings
+                            </p>
+                        </div>
 
-              {/* Services for Organizations */}
-              <div>
-                  <h3 className="text-2xl font-bold text-gray-800 text-center mb-8">For Organizations & Professionals</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                      {/* Service Card 4 */}
-                      <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                          <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
-                              <svg className="h-10 w-10 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /> </svg>
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">Sports & Fitness Analysis</h3>
-                          <p className="text-gray-600 mb-4">Data collection and intervention solutions for athletes and fitness clients to enhance performance and motivation.</p>
-                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
-                      </div>
-                      {/* Service Card 5 */}
-                      <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                          <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
-                              <svg className="h-10 w-10 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /> </svg>
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">Organizational Behavior Mgt.</h3>
-                          <p className="text-gray-600 mb-4">Applying behavioral principles to business to improve employee performance, safety, and productivity via data-driven solutions.</p>
-                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {services.map((service, index) => (
+                                <div key={index} className="service-card bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                                        <i className={`${service.icon} text-white text-2xl`}></i>
+                                    </div>
+                                    <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">{service.title}</h3>
+                                    <p className="text-gray-600 mb-4">{service.description}</p>
+                                    <ul className="space-y-2 mb-6">
+                                        {service.features.map((feature, idx) => (
+                                            <li key={idx} className="flex items-center text-sm text-gray-600">
+                                                <i className="fas fa-check text-green-500 mr-2"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="text-blue-600 font-semibold mb-4">{service.price}</div>
+                                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                        Learn More
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white">
-          <div className="container mx-auto px-6 text-center">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">What Families Are Saying</h2>
-               <div className="max-w-3xl mx-auto">
-                  <div className="p-8 bg-gray-50 rounded-lg shadow-sm">
-                      <p className="text-xl italic text-gray-700 mb-4">"The Plano Tutor has been a life-changing partner for our family. The compassionate care and individualized attention have helped our son make incredible progress. We finally feel hopeful."</p>
-                      <p className="font-bold text-lg text-blue-700">&mdash; Sarah J., Plano, TX</p>
-                  </div>
-              </div>
-          </div>
-      </section>
+        // About Section Component
+        const AboutSection = () => {
+            return (
+                <section id="about" className="py-20 bg-gray-50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
+                                    Expert Care, Compassionate Approach
+                                </h2>
+                                <p className="text-lg text-gray-600 mb-6">
+                                    At The Plano Tutor, we believe every child deserves the opportunity to reach their full potential. Our evidence-based ABA therapy and comprehensive data collection solutions are designed to support growth across all environments.
+                                </p>
+                                <div className="space-y-4">
+                                    <div className="flex items-center">
+                                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i className="fas fa-certificate text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-gray-900">Board Certified Behavior Analysts</h4>
+                                            <p className="text-gray-600">Licensed BCBA professionals with extensive experience</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i className="fas fa-shield-alt text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-gray-900">HIPAA Compliant</h4>
+                                            <p className="text-gray-600">Secure, encrypted data protection and privacy</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i className="fas fa-users text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-gray-900">Family-Centered Approach</h4>
+                                            <p className="text-gray-600">Collaborative care involving parents and caregivers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 text-white">
+                                    <h3 className="text-2xl font-bold font-heading mb-6">Our Credentials</h3>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center">
+                                            <i className="fas fa-check-circle text-yellow-300 mr-3"></i>
+                                            <span>Texas State Licensed BCBAs</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <i className="fas fa-check-circle text-yellow-300 mr-3"></i>
+                                            <span>$2M Professional Liability Insurance</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <i className="fas fa-check-circle text-yellow-300 mr-3"></i>
+                                            <span>32+ CEUs Annually</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <i className="fas fa-check-circle text-yellow-300 mr-3"></i>
+                                            <span>ABAI, TXABA, APBA Members</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <i className="fas fa-check-circle text-yellow-300 mr-3"></i>
+                                            <span>SOC 2 Certified Technology</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-blue-800 text-white">
-          <div className="container mx-auto px-6 text-center">
-              <h2 className="text-3xl font-bold mb-4">Ready to Take the Next Step?</h2>
-              <p className="max-w-2xl mx-auto text-lg opacity-90 mb-8">Our team is here to guide you through the process. Contact us today or fill out our intake form to get started.</p>
-              <a href="/intake" className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 transform hover:scale-105">Request an Intake Consultation</a>
-          </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300">
-        <div className="container mx-auto px-6 py-12">
-            <div className="grid md:grid-cols-4 gap-8 mb-8">
-                {/* Company */}
-                <div className="footer-col">
-                    <h4 className="text-white font-bold mb-4">Company</h4>
-                    <ul>
-                        <li className="mb-2"><a href="/about" className="hover:text-yellow-400">About Us</a></li>
-                        <li className="mb-2"><a href="/about" className="hover:text-yellow-400">Our Approach</a></li>
-                        <li className="mb-2"><a href="/testimonials" className="hover:text-yellow-400">Success Stories</a></li>
-                        <li className="mb-2"><a href="/careers" className="hover:text-yellow-400">Careers</a></li>
-                    </ul>
+        // Pricing Section Component
+        const PricingSection = () => {
+            const pricingPlans = [
+                {
+                    name: 'Individual Therapy',
+                    price: '$75-125',
+                    period: 'per hour',
+                    description: 'Perfect for families seeking in-home ABA therapy',
+                    features: [
+                        'One-on-one ABA therapy sessions',
+                        'Individualized treatment plans',
+                        'Parent training included',
+                        'Progress tracking and reporting',
+                        'Flexible scheduling'
+                    ],
+                    popular: false
+                },
+                {
+                    name: 'Professional Training',
+                    price: '$150',
+                    period: 'per hour',
+                    description: 'Comprehensive training for educators and professionals',
+                    features: [
+                        'FBA methodology training',
+                        'Data collection systems',
+                        'BIPS development',
+                        'Compliance documentation',
+                        'CEU credits available'
+                    ],
+                    popular: true
+                },
+                {
+                    name: 'Data Solutions',
+                    price: '$200-500',
+                    period: 'setup + monthly',
+                    description: 'Complete data collection platform implementation',
+                    features: [
+                        'Custom platform setup',
+                        'Mobile app access',
+                        'Real-time dashboards',
+                        'Automated reporting',
+                        '24/7 technical support'
+                    ],
+                    popular: false
+                },
+                {
+                    name: 'Enterprise Solutions',
+                    price: 'Custom',
+                    period: 'quote',
+                    description: 'Tailored solutions for organizations and institutions',
+                    features: [
+                        'Custom development',
+                        'Integration capabilities',
+                        'Multi-user management',
+                        'Advanced analytics',
+                        'Dedicated support team'
+                    ],
+                    popular: false
+                }
+            ];
+
+            return (
+                <section id="pricing" className="py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-4">
+                                Transparent Pricing
+                            </h2>
+                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                Clear, upfront pricing with no hidden fees. Payment plans available for ongoing services.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {pricingPlans.map((plan, index) => (
+                                <div key={index} className={`pricing-card relative bg-white p-8 rounded-2xl shadow-lg border-2 ${plan.popular ? 'border-blue-500' : 'border-gray-200'}`}>
+                                    {plan.popular && (
+                                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                            <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                                Most Popular
+                                            </span>
+                                        </div>
+                                    )}
+                                    <div className="text-center mb-6">
+                                        <h3 className="text-xl font-bold font-heading text-gray-900 mb-2">{plan.name}</h3>
+                                        <div className="text-3xl font-bold text-gray-900 mb-1">
+                                            {plan.price}
+                                            <span className="text-lg font-normal text-gray-600">/{plan.period}</span>
+                                        </div>
+                                        <p className="text-gray-600">{plan.description}</p>
+                                    </div>
+                                    <ul className="space-y-3 mb-8">
+                                        {plan.features.map((feature, idx) => (
+                                            <li key={idx} className="flex items-start">
+                                                <i className="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                                <span className="text-gray-600">{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <button className={`w-full py-3 rounded-lg font-semibold transition-colors ${plan.popular ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-100 text-gray-900 hover:bg-gray-200'}`}>
+                                        Get Started
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-16 bg-gray-50 rounded-2xl p-8">
+                            <div className="text-center">
+                                <h3 className="text-2xl font-bold font-heading text-gray-900 mb-4">Payment Options</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div className="flex items-center justify-center">
+                                        <i className="fas fa-credit-card text-blue-600 mr-3"></i>
+                                        <span className="text-gray-700">Credit/Debit Cards</span>
+                                    </div>
+                                    <div className="flex items-center justify-center">
+                                        <i className="fas fa-money-check text-blue-600 mr-3"></i>
+                                        <span className="text-gray-700">Payment Plans Available</span>
+                                    </div>
+                                    <div className="flex items-center justify-center">
+                                        <i className="fas fa-clock text-blue-600 mr-3"></i>
+                                        <span className="text-gray-700">NET 15 Terms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Contact Section Component
+        const ContactSection = () => {
+            const [formData, setFormData] = useState({
+                name: '',
+                email: '',
+                phone: '',
+                service: '',
+                message: ''
+            });
+
+            const handleChange = (e) => {
+                setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                });
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                console.log('Form submitted:', formData);
+                // Handle form submission logic here
+                alert('Thank you for your inquiry! We will contact you soon.');
+            };
+
+            return (
+                <section id="contact" className="py-20 bg-gray-50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-4">
+                                Get Started Today
+                            </h2>
+                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                Ready to begin your journey? Contact us for a free consultation and discover how we can help.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                            <div>
+                                <div className="bg-white p-8 rounded-2xl shadow-lg">
+                                    <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Send us a message</h3>
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                value={formData.name}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label>
+                                            <select
+                                                name="service"
+                                                value={formData.service}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                required
+                                            >
+                                                <option value="">Select a service</option>
+                                                <option value="aba-therapy">In-Home ABA Therapy</option>
+                                                <option value="school-training">School Training Programs</option>
+                                                <option value="data-solutions">Data Collection Solutions</option>
+                                                <option value="parent-training">Parent Training</option>
+                                                <option value="consultation">Consultation Services</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                            <textarea
+                                                name="message"
+                                                value={formData.message}
+                                                onChange={handleChange}
+                                                rows="4"
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="Tell us about your needs..."
+                                            ></textarea>
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                                        >
+                                            Send Message
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div className="space-y-8">
+                                <div className="bg-white p-8 rounded-2xl shadow-lg">
+                                    <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Contact Information</h3>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center">
+                                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i className="fas fa-phone text-blue-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-gray-900">Phone</h4>
+                                                <p className="text-gray-600">(855) 772-8847</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i className="fas fa-envelope text-green-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-gray-900">Email</h4>
+                                                <p className="text-gray-600">info@planotutor.net</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i className="fas fa-map-marker-alt text-purple-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-gray-900">Service Area</h4>
+                                                <p className="text-gray-600">Plano, Frisco, McKinney, Allen, Richardson</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i className="fas fa-clock text-yellow-600"></i>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-gray-900">Hours</h4>
+                                                <p className="text-gray-600">Mon-Fri: 8AM-6PM<br />Sat: 9AM-2PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl text-white">
+                                    <h3 className="text-2xl font-bold font-heading mb-4">Emergency Support</h3>
+                                    <p className="mb-4">24/7 crisis consultation available for existing clients</p>
+                                    <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                        Emergency Contact
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Footer Component
+        const Footer = () => {
+            return (
+                <footer className="bg-gray-900 text-white py-16">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div>
+                                <div className="flex items-center space-x-2 mb-6">
+                                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                                        <i className="fas fa-brain text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h1 className="text-xl font-bold font-heading">The Plano Tutor</h1>
+                                        <p className="text-sm text-gray-400">ABA Therapy & Data Solutions</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-400 mb-4">
+                                    Empowering children and families through expert ABA therapy and comprehensive behavior data solutions.
+                                </p>
+                                <div className="flex space-x-4">
+                                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                        <i className="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                        <i className="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                                        <i className="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold mb-6">Services</h3>
+                                <ul className="space-y-3">
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">In-Home ABA Therapy</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">School Training</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Data Solutions</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Parent Training</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Consultation</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold mb-6">Resources</h3>
+                                <ul className="space-y-3">
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">HIPAA Compliance</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold mb-6">Contact</h3>
+                                <div className="space-y-3">
+                                    <p className="text-gray-400 flex items-center">
+                                        <i className="fas fa-phone mr-2"></i>
+                                        (855) 772-8847
+                                    </p>
+                                    <p className="text-gray-400 flex items-center">
+                                        <i className="fas fa-envelope mr-2"></i>
+                                        info@planotutor.net
+                                    </p>
+                                    <p className="text-gray-400 flex items-center">
+                                        <i className="fas fa-map-marker-alt mr-2"></i>
+                                        Plano, TX & Surrounding Areas
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+                            <p className="text-gray-400">
+                                © 2024 The Plano Tutor. All rights reserved. | Licensed in Texas | HIPAA Compliant
+                            </p>
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            return (
+                <div className="min-h-screen">
+                    <Header />
+                    <HeroSection />
+                    <ServicesSection />
+                    <AboutSection />
+                    <PricingSection />
+                    <ContactSection />
+                    <Footer />
                 </div>
-                {/* Services */}
-                <div className="footer-col">
-                    <h4 className="text-white font-bold mb-4">Services</h4>
-                    <ul>
-                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">In-Home Therapy</a></li>
-                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">School Consultation</a></li>
-                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">Clinic-Based Services</a></li>
-                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">Sports & Fitness</a></li>
-                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">OBM</a></li>
-                    </ul>
-                </div>
-                {/* Resources */}
-                <div className="footer-col">
-                    <h4 className="text-white font-bold mb-4">Resources</h4>
-                    <ul>
-                        <li className="mb-2"><a href="/blog" className="hover:text-yellow-400">Blog</a></li>
-                        <li className="mb-2"><a href="/faq" className="hover:text-yellow-400">FAQs</a></li>
-                        <li className="mb-2"><a href="/pricing" className="hover:text-yellow-400">Pricing</a></li>
-                    </ul>
-                </div>
-                {/* Contact */}
-                <div className="footer-col">
-                    <h4 className="text-white font-bold mb-4">Contact</h4>
-                    <address className="not-italic">
-                        <p>123 Progress Way<br />Plano, TX 75023</p>
-                        <a href="tel:8557728847" className="block mt-2 hover:text-yellow-400">(855) 772-8847</a>
-                        <a href="mailto:info@planotutor.net" className="block mt-1 hover:text-yellow-400">info@planotutor.net</a>
-                    </address>
-                </div>
-            </div>
-            <div className="border-t border-gray-700 pt-6 text-center text-sm">
-                <p>&copy; 2025 The Plano Tutor. All Rights Reserved. | <a href="/privacy" className="hover:text-yellow-400">Privacy Policy</a> | <a href="/terms" className="hover:text-yellow-400">Terms of Service</a></p>
-            </div>
-        </div>
-      </footer>
-    </main>
-  );
-}
+            );
+        };
+
+        // Render the app
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

@@ -16,7 +16,7 @@ export default function Home() {
       <header id="header" className="bg-white py-4 shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-6 flex justify-between items-center">
             {/* Logo */}
-            <a href="#" className="flex items-center space-x-2">
+            <a href="/" className="flex items-center space-x-2">
                 <svg className="h-8 w-8 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                 </svg>
@@ -25,15 +25,15 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-                <a href="#about" className="text-gray-600 hover:text-blue-700 font-semibold">About Us</a>
-                <a href="#services" className="text-gray-600 hover:text-blue-700 font-semibold">Services</a>
-                <a href="#testimonials" className="text-gray-600 hover:text-blue-700 font-semibold">Testimonials</a>
-                <a href="#contact" className="text-gray-600 hover:text-blue-700 font-semibold">Contact</a>
+                <a href="/about" className="text-gray-600 hover:text-blue-700 font-semibold">About Us</a>
+                <a href="/services" className="text-gray-600 hover:text-blue-700 font-semibold">Services</a>
+                <a href="/testimonials" className="text-gray-600 hover:text-blue-700 font-semibold">Testimonials</a>
+                <a href="/contact" className="text-gray-600 hover:text-blue-700 font-semibold">Contact</a>
                 <a href="#" className="text-sm text-gray-600 hover:text-blue-700 font-semibold">Client Portal</a>
             </nav>
 
             {/* Desktop CTA */}
-            <a href="#contact" className="hidden md:inline-block bg-blue-700 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-800 transition duration-300">Start Intake</a>
+            <a href="/intake" className="hidden md:inline-block bg-blue-700 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-800 transition duration-300">Start Intake</a>
             
             {/* Mobile Menu Toggle - Uses onClick to change the state */}
             <button 
@@ -51,13 +51,13 @@ export default function Home() {
         {/* Mobile Navigation - Conditionally shown based on 'isMenuOpen' state */}
         <div id="mobile-nav" className={`${isMenuOpen ? '' : 'hidden'} md:hidden absolute top-full left-0 w-full bg-white shadow-lg`}>
             <nav className="flex flex-col p-4 space-y-2">
-                <a href="#about" className="text-gray-600 hover:text-blue-700 p-2 rounded">About Us</a>
-                <a href="#services" className="text-gray-600 hover:text-blue-700 p-2 rounded">Services</a>
-                <a href="#testimonials" className="text-gray-600 hover:text-blue-700 p-2 rounded">Testimonials</a>
-                <a href="#contact" className="text-gray-600 hover:text-blue-700 p-2 rounded">Contact</a>
+                <a href="/about" className="text-gray-600 hover:text-blue-700 p-2 rounded">About Us</a>
+                <a href="/services" className="text-gray-600 hover:text-blue-700 p-2 rounded">Services</a>
+                <a href="/testimonials" className="text-gray-600 hover:text-blue-700 p-2 rounded">Testimonials</a>
+                <a href="/contact" className="text-gray-600 hover:text-blue-700 p-2 rounded">Contact</a>
                 <hr className="my-2" />
                 <a href="#" className="text-gray-600 hover:text-blue-700 p-2 rounded">Client Portal</a>
-                <a href="#contact" className="bg-blue-700 text-white text-center font-bold py-3 px-5 rounded-full hover:bg-blue-800 transition duration-300 mt-2">Start Intake</a>
+                <a href="/intake" className="bg-blue-700 text-white text-center font-bold py-3 px-5 rounded-full hover:bg-blue-800 transition duration-300 mt-2">Start Intake</a>
             </nav>
         </div>
       </header>
@@ -72,7 +72,7 @@ export default function Home() {
           <div className="container mx-auto px-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">Empowering Children, Connecting Families.</h1>
               <p className="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto opacity-90 mb-8">Compassionate ABA therapy in Plano, TX, dedicated to helping your child build independence and thrive.</p>
-              <a href="#contact" className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 transform hover:scale-105">Start the Intake Process</a>
+              <a href="/intake" className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 transform hover:scale-105">Start the Intake Process</a>
           </div>
       </section>
 
@@ -81,7 +81,7 @@ export default function Home() {
           <div className="container mx-auto px-6 text-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Guidance on the Path to Potential</h2>
               <p className="max-w-4xl mx-auto text-lg text-gray-600">
-                  At The Plano Tutor, we understand that every child's journey with Autism Spectrum Disorder (ASD) is unique. We provide expert, evidence-based Applied Behavior Analysis (ABA) therapy that illuminates the path forward. Our play-based, compassionate approach focuses on celebrating your child's strengths, nurturing new skills, and empowering your entire family with the tools for lasting success.
+                  At The Plano Tutor, we understand that every child's journey is unique. We provide expert, evidence-based Applied Behavior Analysis (ABA) therapy that illuminates the path forward. Our play-based, compassionate approach focuses on celebrating your child's strengths, nurturing new skills, and empowering your entire family with the tools for lasting success.
               </p>
           </div>
       </section>
@@ -105,7 +105,7 @@ export default function Home() {
                           </div>
                           <h3 className="text-xl font-bold text-gray-800 mb-2">In-Home ABA Therapy</h3>
                           <p className="text-gray-600 mb-4">We provide personalized ABA programs and robust data collection solutions right in your home to foster daily living skills.</p>
-                          <a href="#" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
+                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
                       </div>
                       {/* Service Card 2 */}
                       <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -114,7 +114,7 @@ export default function Home() {
                           </div>
                           <h3 className="text-xl font-bold text-gray-800 mb-2">School Consultation</h3>
                           <p className="text-gray-600 mb-4">We partner with schools for training on FBAs, data collection, and creating effective BIPs to support student success.</p>
-                          <a href="#" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
+                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
                       </div>
                       {/* Service Card 3 */}
                       <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -123,7 +123,7 @@ export default function Home() {
                           </div>
                           <h3 className="text-xl font-bold text-gray-800 mb-2">Clinic-Based Services</h3>
                           <p className="text-gray-600 mb-4">Our clinic offers a controlled environment for intensive therapy and precise behavior data collection for focused skill acquisition.</p>
-                          <a href="#" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
+                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
                       </div>
                   </div>
               </div>
@@ -139,7 +139,7 @@ export default function Home() {
                           </div>
                           <h3 className="text-xl font-bold text-gray-800 mb-2">Sports & Fitness Analysis</h3>
                           <p className="text-gray-600 mb-4">Data collection and intervention solutions for athletes and fitness clients to enhance performance and motivation.</p>
-                          <a href="#" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
+                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
                       </div>
                       {/* Service Card 5 */}
                       <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -148,7 +148,7 @@ export default function Home() {
                           </div>
                           <h3 className="text-xl font-bold text-gray-800 mb-2">Organizational Behavior Mgt.</h3>
                           <p className="text-gray-600 mb-4">Applying behavioral principles to business to improve employee performance, safety, and productivity via data-driven solutions.</p>
-                          <a href="#" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
+                          <a href="/services" className="font-semibold text-blue-700 hover:text-blue-800">Learn More &rarr;</a>
                       </div>
                   </div>
               </div>
@@ -169,15 +169,15 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section id="contact" className="py-20 bg-blue-800 text-white">
+      <section className="py-20 bg-blue-800 text-white">
           <div className="container mx-auto px-6 text-center">
               <h2 className="text-3xl font-bold mb-4">Ready to Take the Next Step?</h2>
-              <p className="max-w-2xl mx-auto text-lg opacity-90 mb-8">Our team is here to guide you through the process. Contact us today for a free, no-obligation consultation to discuss your child's needs.</p>
-              <a href="#" className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 transform hover:scale-105">Request an Intake Consultation</a>
+              <p className="max-w-2xl mx-auto text-lg opacity-90 mb-8">Our team is here to guide you through the process. Contact us today or fill out our intake form to get started.</p>
+              <a href="/intake" className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 transform hover:scale-105">Request an Intake Consultation</a>
           </div>
       </section>
       
-      {/* Footer is part of the main layout, so it should be in layout.tsx */}
+      {/* Footer */}
       <footer className="bg-gray-800 text-gray-300">
         <div className="container mx-auto px-6 py-12">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
@@ -185,30 +185,30 @@ export default function Home() {
                 <div className="footer-col">
                     <h4 className="text-white font-bold mb-4">Company</h4>
                     <ul>
-                        <li className="mb-2"><a href="#about" className="hover:text-yellow-400">About Us</a></li>
-                        <li className="mb-2"><a href="#" className="hover:text-yellow-400">Our Approach</a></li>
-                        <li className="mb-2"><a href="#testimonials" className="hover:text-yellow-400">Success Stories</a></li>
-                        <li className="mb-2"><a href="#" className="hover:text-yellow-400">Careers</a></li>
+                        <li className="mb-2"><a href="/about" className="hover:text-yellow-400">About Us</a></li>
+                        <li className="mb-2"><a href="/about" className="hover:text-yellow-400">Our Approach</a></li>
+                        <li className="mb-2"><a href="/testimonials" className="hover:text-yellow-400">Success Stories</a></li>
+                        <li className="mb-2"><a href="/careers" className="hover:text-yellow-400">Careers</a></li>
                     </ul>
                 </div>
                 {/* Services */}
                 <div className="footer-col">
                     <h4 className="text-white font-bold mb-4">Services</h4>
                     <ul>
-                        <li className="mb-2"><a href="#services" className="hover:text-yellow-400">In-Home Therapy</a></li>
-                        <li className="mb-2"><a href="#services" className="hover:text-yellow-400">School Consultation</a></li>
-                        <li className="mb-2"><a href="#services" className="hover:text-yellow-400">Clinic-Based Services</a></li>
-                        <li className="mb-2"><a href="#services" className="hover:text-yellow-400">Sports & Fitness</a></li>
-                        <li className="mb-2"><a href="#services" className="hover:text-yellow-400">OBM</a></li>
+                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">In-Home Therapy</a></li>
+                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">School Consultation</a></li>
+                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">Clinic-Based Services</a></li>
+                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">Sports & Fitness</a></li>
+                        <li className="mb-2"><a href="/services" className="hover:text-yellow-400">OBM</a></li>
                     </ul>
                 </div>
                 {/* Resources */}
                 <div className="footer-col">
                     <h4 className="text-white font-bold mb-4">Resources</h4>
                     <ul>
-                        <li className="mb-2"><a href="#" className="hover:text-yellow-400">Blog</a></li>
-                        <li className="mb-2"><a href="#" className="hover:text-yellow-400">FAQs</a></li>
-                        <li className="mb-2"><a href="#" className="hover:text-yellow-400">Insurance & Pricing</a></li>
+                        <li className="mb-2"><a href="/blog" className="hover:text-yellow-400">Blog</a></li>
+                        <li className="mb-2"><a href="/faq" className="hover:text-yellow-400">FAQs</a></li>
+                        <li className="mb-2"><a href="/pricing" className="hover:text-yellow-400">Pricing</a></li>
                     </ul>
                 </div>
                 {/* Contact */}
@@ -222,7 +222,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="border-t border-gray-700 pt-6 text-center text-sm">
-                <p>&copy; 2025 The Plano Tutor. All Rights Reserved. | <a href="#" className="hover:text-yellow-400">Privacy Policy</a> | <a href="#" className="hover:text-yellow-400">Terms of Service</a></p>
+                <p>&copy; 2025 The Plano Tutor. All Rights Reserved. | <a href="/privacy" className="hover:text-yellow-400">Privacy Policy</a> | <a href="/terms" className="hover:text-yellow-400">Terms of Service</a></p>
             </div>
         </div>
       </footer>

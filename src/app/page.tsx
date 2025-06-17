@@ -16,6 +16,7 @@ const Header = () => {
             setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
+        // Cleanup function to remove the event listener
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -32,12 +33,14 @@ const Header = () => {
                             <p className="text-xs text-gray-600">ABA Therapy & Data Solutions</p>
                         </div>
                     </div>
+
                     <nav className="hidden md:flex space-x-8">
                         <a href="#services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
                         <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
                         <a href="#pricing" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Pricing</a>
                         <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
                     </nav>
+
                     <div className="flex items-center space-x-4">
                         <a href="tel:9724395845" className="hidden md:flex items-center text-blue-600 font-semibold">
                             <Icon className="fas fa-phone mr-2" />
@@ -60,6 +63,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-black/20"></div>
             <div className="blob absolute top-20 right-20 w-64 h-64"></div>
             <div className="blob absolute bottom-20 left-20 w-48 h-48"></div>
+            
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
                 <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6">
                     Empowering Children,<br />
@@ -179,7 +183,7 @@ const PricingSection = () => {
     );
 };
 
-// --- Contact Section Component (Styled with Warm Colors) ---
+// --- Contact Section Component ---
 const ContactSection = () => {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
     const [status, setStatus] = useState('');
@@ -218,11 +222,11 @@ const ContactSection = () => {
                         <div className="bg-white p-8 rounded-2xl shadow-lg">
                            <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Send us a message</h3>
                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label><input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required /></div>
-                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Email</label><input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required /></div>
-                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Phone</label><input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" /></div>
-                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label><select name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required><option value="">Select a service</option><option value="aba-therapy">In-Home ABA Therapy</option><option value="school-training">School Training Programs</option><option value="data-solutions">Data Collection Solutions</option><option value="parent-training">Parent Training</option><option value="consultation">Consultation Services</option></select></div>
-                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Message</label><textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" placeholder="Tell us about your needs..."></textarea></div>
+                                <div><label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label><input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required /></div>
+                                <div><label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email</label><input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required /></div>
+                                <div><label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone</label><input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" /></div>
+                                <div><label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label><select id="service" name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required><option value="">Select a service</option><option value="aba-therapy">In-Home ABA Therapy</option><option value="school-training">School Training Programs</option><option value="data-solutions">Data Collection Solutions</option><option value="parent-training">Parent Training</option><option value="consultation">Consultation Services</option></select></div>
+                                <div><label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label><textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent" required placeholder="Tell us about your needs..."></textarea></div>
                                 <button type="submit" disabled={status === 'sending'} className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors disabled:bg-gray-400">
                                     {status === 'sending' ? 'Sending...' : 'Send Message'}
                                 </button>

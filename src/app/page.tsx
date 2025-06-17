@@ -201,18 +201,34 @@ const PricingSection = () => {
 
 // --- Contact Section Component ---
 const ContactSection = () => {
-    // This state management is now inside a client component
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [status, setStatus] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        setIsSubmitted(true);
+        setStatus('sending');
+
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -222,24 +238,19 @@ const ContactSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
                         <div className="bg-white p-8 rounded-2xl shadow-lg">
-                            {isSubmitted ? (
-                                <div className="text-center py-10">
-                                    <h3 className="text-2xl font-bold font-heading text-gray-900 mb-4">Thank You!</h3>
-                                    <p className="text-gray-600">Your message has been sent. We will contact you soon.</p>
-                                </div>
-                            ) : (
-                                <>
-                                    <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Send us a message</h3>
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div><label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label><input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required /></div>
-                                        <div><label className="block text-sm font-medium text-gray-700 mb-2">Email</label><input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required /></div>
-                                        <div><label className="block text-sm font-medium text-gray-700 mb-2">Phone</label><input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" /></div>
-                                        <div><label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label><select name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required><option value="">Select a service</option><option value="aba-therapy">In-Home ABA Therapy</option><option value="school-training">School Training Programs</option><option value="data-solutions">Data Collection Solutions</option><option value="parent-training">Parent Training</option><option value="consultation">Consultation Services</option></select></div>
-                                        <div><label className="block text-sm font-medium text-gray-700 mb-2">Message</label><textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about your needs..."></textarea></div>
-                                        <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Send Message</button>
-                                    </form>
-                                </>
-                            )}
+                           <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Send us a message</h3>
+                           <form onSubmit={handleSubmit} className="space-y-6">
+                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label><input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required /></div>
+                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Email</label><input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required /></div>
+                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Phone</label><input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" /></div>
+                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label><select name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required><option value="">Select a service</option><option value="aba-therapy">In-Home ABA Therapy</option><option value="school-training">School Training Programs</option><option value="data-solutions">Data Collection Solutions</option><option value="parent-training">Parent Training</option><option value="consultation">Consultation Services</option></select></div>
+                                <div><label className="block text-sm font-medium text-gray-700 mb-2">Message</label><textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about your needs..."></textarea></div>
+                                <button type="submit" disabled={status === 'sending'} className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400">
+                                    {status === 'sending' ? 'Sending...' : 'Send Message'}
+                                </button>
+                                {status === 'success' && <p className="text-green-600 mt-4">Thank you! Your message has been sent.</p>}
+                                {status === 'error' && <p className="text-red-600 mt-4">Something went wrong. Please try again.</p>}
+                           </form>
                         </div>
                     </div>
                     <div className="space-y-8">

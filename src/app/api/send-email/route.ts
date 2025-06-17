@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       from: 'Contact Form <onboarding@resend.dev>', // Required by Resend, can be this default
       to: ['info@planotutor.net'], // Your email address here
       subject: `New Inquiry from ${name} - The Plano Tutor`,
-      reply_to: email, // Set the reply-to to the user's email
+      replyTo: email, // CORRECTED: Changed 'reply_to' to 'replyTo' (camelCase)
       // Use HTML for a nicely formatted email body
       html: `
         <h2>New Website Inquiry</h2>

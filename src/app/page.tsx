@@ -44,9 +44,9 @@ const Header = () => {
                     </nav>
 
                     <div className="flex items-center space-x-4">
-                        <a href="tel:8557728847" className="hidden md:flex items-center text-blue-600 font-semibold">
+                        <a href="tel:9724395845" className="hidden md:flex items-center text-blue-600 font-semibold">
                             <Icon className="fas fa-phone mr-2" />
-                            (855) 772-8847
+                            (972) 439-5845
                         </a>
                         <a href="#contact" className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                             Get Started
@@ -72,7 +72,7 @@ const HeroSection = () => {
                     <span className="text-yellow-300">Connecting Families</span>
                 </h1>
                 <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-                    Comprehensive ABA therapy and behavior data collection solutions for home, school, clinic, sports, and organizational settings in Plano, TX.
+                    Comprehensive ABA therapy and behavior data collection solutions for home, school, clinic, sports, and organizational settings.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="/intake" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
@@ -246,9 +246,9 @@ const ContactSection = () => {
                         <div className="bg-white p-8 rounded-2xl shadow-lg">
                             <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Contact Information</h3>
                             <div className="space-y-4">
-                                <div className="flex items-center"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4"><Icon className="fas fa-phone text-blue-600" /></div><div><h4 className="font-semibold text-gray-900">Phone</h4><p className="text-gray-600">(855) 772-8847</p></div></div>
+                                <div className="flex items-center"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4"><Icon className="fas fa-phone text-blue-600" /></div><div><h4 className="font-semibold text-gray-900">Phone</h4><p className="text-gray-600">(972) 439-5845</p></div></div>
                                 <div className="flex items-center"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4"><Icon className="fas fa-envelope text-green-600" /></div><div><h4 className="font-semibold text-gray-900">Email</h4><p className="text-gray-600">info@planotutor.net</p></div></div>
-                                <div className="flex items-center"><div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4"><Icon className="fas fa-map-marker-alt text-purple-600" /></div><div><h4 className="font-semibold text-gray-900">Service Area</h4><p className="text-gray-600">Plano, Frisco, McKinney, Allen, Richardson</p></div></div>
+                                <div className="flex items-center"><div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4"><Icon className="fas fa-map-marker-alt text-purple-600" /></div><div><h4 className="font-semibold text-gray-900">Service Area</h4><p className="text-gray-600">Garland, Rockwall, Irving, Frisco, McKinney, Allen, Richardson</p></div></div>
                             </div>
                         </div>
                     </div>
@@ -273,7 +273,7 @@ const Footer = () => {
                     </div>
                     <div><h3 className="text-lg font-semibold mb-6">Services</h3><ul className="space-y-3"><li><a href="#services" className="text-gray-400 hover:text-white transition-colors">In-Home ABA Therapy</a></li><li><a href="#services" className="text-gray-400 hover:text-white transition-colors">School Training</a></li><li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Data Solutions</a></li></ul></div>
                     <div><h3 className="text-lg font-semibold mb-6">Resources</h3><ul className="space-y-3"><li><a href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li><li><a href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li><li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li></ul></div>
-                    <div><h3 className="text-lg font-semibold mb-6">Contact</h3><div className="space-y-3"><p className="text-gray-400 flex items-center"><Icon className="fas fa-phone mr-2" />(855) 772-8847</p><p className="text-gray-400 flex items-center"><Icon className="fas fa-envelope mr-2" />info@planotutor.net</p><p className="text-gray-400 flex items-center"><Icon className="fas fa-map-marker-alt mr-2" />Plano, TX & Surrounding Areas</p></div></div>
+                    <div><h3 className="text-lg font-semibold mb-6">Contact</h3><div className="space-y-3"><p className="text-gray-400 flex items-center"><Icon className="fas fa-phone mr-2" />(972) 439-5845</p><p className="text-gray-400 flex items-center"><Icon className="fas fa-envelope mr-2" />info@planotutor.net</p><p className="text-gray-400 flex items-center"><Icon className="fas fa-map-marker-alt mr-2" />Garland, Rockwall, Irving & Surrounding Areas</p></div></div>
                 </div>
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center"><p className="text-gray-400">© 2024 The Plano Tutor. All rights reserved. | Licensed in Texas | HIPAA Compliant</p></div>
             </div>

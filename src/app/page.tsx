@@ -29,8 +29,8 @@ const Header = () => {
                             <Icon className="fas fa-brain text-white text-lg" />
                         </div>
                         <div>
-                            <h1 className="text-xl font-bold font-heading text-gray-900">The Plano Tutor</h1>
-                            <p className="text-xs text-gray-600">ABA Therapy & Data Solutions</p>
+                            <h1 className="text-xl font-bold font-heading text-gray-900">Elevating the Practice of Behavior Analysis</h1>
+                            <p className="text-xs text-gray-600">Expert Supervision. Educator Training. Behavior Data Solutions. </p>
                         </div>
                     </div>
 
@@ -262,10 +262,10 @@ const Footer = () => {
                             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"><Icon className="fas fa-brain text-white" /></div>
                             <div><h1 className="text-xl font-bold font-heading">The Plano Tutor</h1><p className="text-sm text-gray-400">ABA Therapy & Data Solutions</p></div>
                         </div>
-                        <p className="text-gray-400 mb-4">Empowering children and families through expert ABA therapy and comprehensive behavior data solutions.</p>
+                        <p className="text-gray-400 mb-4">Advancing the field with evidence-based training, supervision, and technology.</p>
                     </div>
                     <div><h3 className="text-lg font-semibold mb-6">Services</h3><ul className="space-y-3"><li><a href="#services" className="text-gray-400 hover:text-white transition-colors">In-Home ABA Therapy</a></li><li><a href="#services" className="text-gray-400 hover:text-white transition-colors">School Training</a></li><li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Data Solutions</a></li></ul></div>
-                    <div><h3 className="text-lg font-semibold mb-6">Resources</h3><ul className="space-y-3"><li><a href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li><li><a href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li><li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li></ul></div>
+                    <div><h3 className="text-lg font-semibold mb-6">Resources</h3><ul className="space-y-3"><li><a href="/blog" className="text-gray-400 hover:text-white transition-colors">Privacy</a></li><li><a href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li><li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li></ul></div>
                     <div><h3 className="text-lg font-semibold mb-6">Contact</h3><div className="space-y-3"><p className="text-gray-400 flex items-center"><Icon className="fas fa-phone mr-2" />(972) 439-5845</p><p className="text-gray-400 flex items-center"><Icon className="fas fa-envelope mr-2" />info@planotutor.net</p><p className="text-gray-400 flex items-center"><Icon className="fas fa-map-marker-alt mr-2" />Garland, Rockwall, Irving & Surrounding Areas</p></div></div>
                 </div>
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center"><p className="text-gray-400">© 2024 The Plano Tutor. All rights reserved. | Licensed in Texas | HIPAA Compliant</p></div>
